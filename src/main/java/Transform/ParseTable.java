@@ -17,4 +17,12 @@ public class ParseTable {
         JSONObject settings = (JSONObject) table.get("Settings");
         return (String) settings.get(colName);
     }
+
+    public static JSONObject getData(JSONObject table){
+        return (JSONObject) table.get("Table");
+    }
+
+    public static JSONObject getSettings(JSONObject table){
+        return (JSONObject) table.get("Settings");
+    }
 }
