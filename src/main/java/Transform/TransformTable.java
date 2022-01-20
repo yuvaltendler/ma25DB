@@ -31,4 +31,10 @@ public class TransformTable {
         settings.put("nextKey", nextKey);
         table.put("Settings", settings);
     }
+
+    public static void dropRecord(JSONObject table, int recordInx){
+        JSONObject data = ParseTable.getData(table);
+        data.remove(String.valueOf(recordInx));
+        table.put("Table", data);
+    }
 }

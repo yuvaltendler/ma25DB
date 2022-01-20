@@ -50,4 +50,16 @@ class TransformTableTest {
         TransformTable.insertRecord(t1, recordToAdd);
         assert ParseTable.getRecord(t1, 4).equals(recordToAdd);
     }
+
+    @Test
+    void dropRecord(){
+        final String path = "C:\\Users\\user\\Documents\\Army\\codes\\ma25DB\\src\\main\\resources\\DB\\T1.json";
+        TableManager tableManager = TableManager.getInstance(10);
+        ArrayList<String> list = new ArrayList<String>(){{add(path);}};
+        tableManager.addNewTable("T1", list);
+        JSONObject t1 = tableManager.getTableByRow("T1", 2);
+
+        TransformTable.dropRecord(t1, 2);
+        assert ParseTable.getData(t1).size() == 2;
+    }
 }
