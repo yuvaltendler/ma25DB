@@ -13,9 +13,9 @@ public class ParseTable {
         return getRecord(table, recordInx).get(colName);
     }
 
-    public static String getColType(JSONObject table, String colName){
+    public static String getSetting(JSONObject table, String settingName){
         JSONObject settings = (JSONObject) table.get("Settings");
-        return (String) settings.get(colName);
+        return (String) settings.get(settingName);
     }
 
     public static JSONObject getData(JSONObject table){
