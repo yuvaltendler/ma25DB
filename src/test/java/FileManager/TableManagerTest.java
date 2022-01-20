@@ -17,11 +17,8 @@ class TableManagerTest {
     void testGetTable() throws ParseException, IOException {
         final String path = "C:\\Users\\user\\Documents\\Army\\codes\\ma25DB\\src\\main\\resources\\DB\\T1.json";
         TableManager tableManager = TableManager.getInstance(10);
-        HashMap<String, ArrayList<String>> tableNameToPaths = new HashMap<String, ArrayList<String>>(){{
-            ArrayList<String> list = new ArrayList<String>(){{add(path);}};
-            put("T1", list);
-        }};
-        tableManager.setTableNameToPaths(tableNameToPaths);
+        tableManager.addNewTable("T1", new ArrayList<String>());
+        tableManager.addSubTable("T1", path);
         ArrayList<JSONObject> res = tableManager.getTable("T1");
 
         final JSONParser parser = new JSONParser();

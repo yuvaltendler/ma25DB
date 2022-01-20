@@ -11,12 +11,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 public class TableManager {
     private static TableManager instance;
 
     private final int MUX_RECORD_IN_FILE;
-    private @Getter @Setter HashMap<String, ArrayList<String>> tableNameToPaths;
+    private HashMap<String, ArrayList<String>> tableNameToPaths = new HashMap<>();
 
     public JSONObject getTableByRow(String tableName, int row){
         return this.getTableByIndex(tableName, row/MUX_RECORD_IN_FILE);
@@ -28,6 +29,18 @@ public class TableManager {
             res.add(this.getTableByIndex(tableName, i));
         }
         return res;
+    }
+
+    public void addNewTable(String tableName, ArrayList<String> paths){
+        this.tableNameToPaths.put(tableName, paths);
+    }
+
+    public void addSubTable(String tableName, String path){
+        this.tableNameToPaths.get(tableName).add(path);
+    }
+
+    public Set<String> getTablesNames(){
+        return this.tableNameToPaths.keySet();
     }
 
     private JSONObject getTableByIndex(String tableName, int inx){
