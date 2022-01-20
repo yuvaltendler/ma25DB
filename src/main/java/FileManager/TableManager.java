@@ -33,7 +33,8 @@ public class TableManager {
     private JSONObject getTableByIndex(String tableName, int inx){
         JSONParser jsonParser = new JSONParser();
         try {
-            Object obj  = jsonParser.parse(new FileReader(String.valueOf(new FileReader(this.tableNameToPaths.get(tableName).get(inx)))));
+            String path = this.tableNameToPaths.get(tableName).get(inx);
+            Object obj  = jsonParser.parse(new FileReader(path));
             return (JSONObject) obj;
 
 
